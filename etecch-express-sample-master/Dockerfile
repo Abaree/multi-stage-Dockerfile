@@ -1,11 +1,11 @@
-FROM node:8-alpine AS ts-sample-builder
+FROM node:8-alpine AS etech-sample-builder
 WORKDIR /app
 COPY . .
 RUN npm install
 RUN npm run clean
 RUN npm run build
 
-FROM node:8-alpine AS ts-sample-prod
+FROM node:8-alpine AS etech-sample-prod
 WORKDIR /app
 COPY --from=ts-sample-builder ./app/dist ./dist
 COPY package* ./
